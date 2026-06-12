@@ -79,3 +79,5 @@
 //console.log(fruits.includes("tufaax"))
 
 // console.log(fruits.includes(`moos`)); kanna waa true ayaa ladhahay sida waa include
+
+//hi the world
