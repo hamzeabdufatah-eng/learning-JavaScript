@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <style>
+      :root {
+        /* Petra Heritage Palette */
+        --deep-green-4: #1b2a25;
+        --warm-sand-4: #c1b5ab;
+        --desert-taupe-4: #8a765e;
+        --deep-brown: #2d0b00;
+        --golden-ochre-4: #c89a52;
+        --terracotta-4: #a7472a;
+        --jordan-red: #830409;
+      }
+      body {
+        max-width: 500px;
+        margin: 20px auto;
+        background-color: var(--warm-sand-4);
+      }
+      #task-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Task List</h1>
+    <form id="task-form">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="add a New Task"
+        required
+      />
+      <button type="submit">add</button>
+    </form>
+    <ul id="task-list"></ul>
+  </body>
+</html>
+<script>
+  //     const form=document.getElementById("task-form")
+  // const input=document.getElementById("task-input")
+  // const taskList=document.getElementById("task-list")
+  // form.addEventListener("submit",function(e){
+  //     e.preventDefault();
+
+  // addTask(input.value)
+  //  input.value=``
+  // })
+  // function addTask(text){
+  //     const li=document.createElement("li")
+  //     li.innerHTML=`<span> ${text}</span><button class="delete-btn">x</button>`
+  //     taskList.appendChild(li);
+
+  //     li.querySelector(".delete-btn").addEventListener("click",function(){
+  //         li.remove()
+  //     })
+  // }
+ 
+</script>
