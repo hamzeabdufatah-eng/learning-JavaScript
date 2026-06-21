@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .Box {
+        padding: 15px;
+        background: rgb(35, 35, 34);
+        color: white;
+        display: inline-block;
+        cursor: move;
+        margin-bottom: 20px;
+      }
+      .drop-zone {
+        width: 200px;
+        height: 100px;
+        border: 3px dashed #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        color: #666;
+      }
+
+      .active{
+        border-color: green;background: #e6ffe7;display: flex;justify-content: center;align-items: center;
+      }
+      #log-window{
+        background: #222;
+        color: #00ff00; 
+        padding: 15px;
+        height: 150px;
+        overflow-y: scroll;
+        font-family: monospace;
+        margin: 20px;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <h2>js events</h2>
+    <div id="myBox" class="Box" draggable="true">
+      ijiid ama igu jid(double click)
+    </div>
+    <div id="dropZone" class="drop-zone">halkan kutuur</div>
+    <video
+      id="myVideo"
+      width="200px"
+      controls
+      style="margin-top: 20px; display: block"
+    >
+      <source
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <h3>console.log()</h3>
+    <div id="log-window"></div>
+    <button id="btn" tabindex="0">button focus</button>
+  <form id="theForm">
+    <input type="text" id="myInput" placeholder="enter your name">
+  <button type="submit">send The Form</button>
+  </form>
+    <script src="/events.js"></script>
+  </body>
+</html>
