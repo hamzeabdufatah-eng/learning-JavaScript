@@ -24,3 +24,17 @@
 // let age = 22;
 // localStorage.setItem("userAge",age);
 // console.log(localStorage.getItem("userAge"));
+
+const themeBtn=document.getElementById("themeBtn")
+let currentTheme=localStorage.getItem("theme")
+if(currentTheme==="dark"){
+    document.body.classList.add("dark-theme")
+}
+themeBtn.addEventListener("click",function(){
+    document.body.classList.toggle("dark-theme")
+    if (document.body.classList.contains("dark-theme")){
+        localStorage.setItem("theme","dark")
+    }else{
+        localStorage.setItem("theme","light")
+    }
+})
