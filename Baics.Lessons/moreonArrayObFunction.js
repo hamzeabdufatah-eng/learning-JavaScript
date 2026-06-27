@@ -93,6 +93,7 @@ const countries = [
 // const soosar=magacyadaWadamad.includes("somalia")
 // console.log(soosar)
 
+
 // const maraykanka=countries.find(c=>c.name==="unated state")//qaabkanaa ugu haboon
 //     if (maraykanka) {
 //         console.log(maraykanka.cities);
@@ -101,6 +102,7 @@ const countries = [
 //     else{
 //         console.log("kuma jiraan")
 //     }
+
 // const soosaar=countries.find(c=>c.name==="unated state")
 //     if(soosaar){
 //         console.log(soosaar.cities.slice(0,2))//qaabkana iyo qaabki hore wa isku mid lkn slice waa isoo bandhig ta koobaad ta labad
@@ -122,7 +124,13 @@ const countries = [
 // }
 // // const{id,name}=user
 // // console.log(name)
-
+// const xogta={
+//   iD: 231,
+//   name:"hamza",
+//   email:"hamzaabdifatah@gamail.com"
+// }
+// const {name:key}=xogta
+// console.log(key)
 //remanig variables //qaabkana wa jira name wixi kujira username iigu shub kadip magaca username kadhig isoo bandhig
 
 // const{name:Username}=user
@@ -137,10 +145,22 @@ const countries = [
 //     price: 9999,
 //   },
 // };
-// // const {
-// //   product: { name},
-// // } = order;
-// // console.log(name);
+// const {
+//   product: { name},
+// }=order 
+// console.log(name);
+// const order={
+//   id:102,
+//   product:{
+//     name:"laptop",
+//     price:"$100",
+//   }
+// }
+// const{
+//   product:{name:productName,price:qiime}
+// }=order;
+// console.log(productName);
+// console.log(qiime)
 
 // //object spread  qaabkana waa copy paste camal iigu shub halkan xogtan weye (...)
 
@@ -148,7 +168,10 @@ const countries = [
 //     ...order
 // }
 // console.log(newProduct)
-
+const newProduct={
+  ...order
+}
+console.log(newProduct)
 //functions
 //function ass variables
 
@@ -187,32 +210,32 @@ const countries = [
 
 //grading system
 
-function calculateGrade(student) {
-  const average = calculateAverage(student.scores);
-  const latterGrade = getGrade(average);
-  return {
-    name: student.name,
-    average: average,
-    grade: latterGrade,
-  };
-}
-function calculateAverage(scores) {
-  const sum = scores.reduce((total, score) => total + score, 0);
-  return sum / scores.length;
-}
-function getGrade(average) {
-  if (average >= 90) return "A";
-  if (average >= 80) return "B";
-  if (average >= 70) return "C";
-  if (average >= 60) return "D";
-  return "f";
-}
- const student1={
-   name:"hamza",
-   scores:[56,78,34,45]
- }
-const student1 = {
-  name: "hamza",
-  scores: [96, 100, 74, 45],
-};
-console.log(calculateGrade(student1));
+// function calculateGrade(student) {
+//   const average = calculateAverage(student.scores);
+//   const latterGrade = getGrade(average);
+//   return {
+//     name: student.name,
+//     average: average,
+//     grade: latterGrade,
+//   };
+// }
+// function calculateAverage(scores) {
+//   const sum = scores.reduce((total, score) => total + score, 0);
+//   return sum / scores.length;
+// }
+// function getGrade(average) {
+//   if (average >= 90) return "A";
+//   if (average >= 80) return "B";
+//   if (average >= 70) return "C";
+//   if (average >= 60) return "D";
+//   return "f";
+// }
+//  const student1={
+//    name:"hamza",
+//    scores:[56,78,34,45]
+//  }
+// const student1 = {
+//   name: "hamza",
+//   scores: [96, 100, 74, 45],
+// };
+// console.log(calculateGrade(student1));

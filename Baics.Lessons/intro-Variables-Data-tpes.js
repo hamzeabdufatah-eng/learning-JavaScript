@@ -1,9 +1,10 @@
 // console.log("hello world");
 //console.log("hello wordl")
-let name="hamze";
-let lastname="abdi";
-let fullname=name+" "+lastname;
-console.log(fullname)
+// let name="hhamza";
+// let lasn="abdi"
+// let nextn="fatah"
+// let fullname=name+" "+lasn+ " "+nextn
+// console.log(fullname)
 
 // let greeting ="wellcome to javascript";
 // console.log(greeting);
@@ -42,32 +43,32 @@ console.log(fullname)
 // console.log(age);
 
 
-//  excercise ka macalinka
+//  excercise of techer
 // 1 fovaourite book  (string weye)
 // let favouriteBook = "hoobaal";
-// 2 the year tha was puplished (number weye)
+// //2 the year tha was puplished (number weye)
 // let puplisheyear = 2026;
-// whether u read yes or no (waa boolean)
+// //whether u read yes or no (waa boolean)
 // let isread = true;
-// 4 your rating if u read it or null it if not(hadi aad akhriday sii number,hadaadan akhrin kadhig null)
+// //4 your rating if u read it or null it if not(hadi aad akhriday sii number,hadaadan akhrin kadhig null)
 // let rating = 4.8;
-// 5 halkan waa meeshi la chek garyn la variables ka soo baxayo
-// /console.log(typeof favouriteBook); //wuxu soo Saaricoonaa(string)
+// //5 halkan waa meeshi la chek garyn la variables ka soo baxayo
+// /console.log(typeof favouriteBook); //wuxu// soo Saaricoonaa(string)
 // console.log(puplisheyear); //wuxu soo sari donaa (number)
 // console.log(isread); //wuxu soo saari doona (boolean)
-// /console.log(typeof rating); //wuxu soo saari doona(number rating)
+// /console.log(typeof rating); //wuxu// soo saari doona(number //rating)
 //  6 samee variavble lkn qimahisa qeexnayn ama cadayn
 // let myfuturebook;
 // console.log(myfuturebook);
 // console.log(typeof myfuturebook);
-let city="jigjiga";
-let  year=2026;
-let iscoding= "true"
-let laptop= null;
-let phone;
-console.log( typeof city);
-console.log(typeof year);
-console.log(  typeof iscoding);
-console.log(typeof laptop )
-console.log(typeof phone)
+// let city="jigjiga";
+// let  year=2026;
+// let iscoding= "true"
+// let laptop=null;
+// let phone;
+// console.log( typeof city);
+// console.log(typeof year);
+// console.log(  typeof iscoding);
+// console.log(typeof laptop )
+// console.log(typeof phone)
 

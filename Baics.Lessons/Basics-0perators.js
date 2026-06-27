@@ -30,7 +30,7 @@
 // ===   strict equal to (compare both value) (value and data type)
 // !=    not equal to
 // !==   strict not equal to(compare both)
-// >     greter Than 
+// >     greter Than
 // <     less than
 // >=    greter than or equal to
 // <=    less than or equal to
@@ -45,9 +45,9 @@
 // console.log(5<=5)
 
 //4 logical operetors
-// && and  
+// && and
 // || or
-// ! not 
+// ! not
 // let haveaLaptop=false
 // let haveaElectiric=true
 // // let caniLearnAcoding=haveaLaptop && haveaElectiric
@@ -79,11 +79,11 @@
 //8  type operators
 // typof and instanceof
 // typeof "hello wolrd"
-// typeof 10   
+// typeof 10
 // console.log(typeof"hello world")
 // console.log(typeof 10)
 // let names=["hamze","axmad","cali"]
-// console.log(names instanceof Array)//true 
+// console.log(names instanceof Array)//true
 // console.log(names instanceof Function)//false
 // console.log(names instanceof object)//true
 
@@ -91,9 +91,26 @@
 // ??
 //  let name=null
 //  console.log(name ?? "guest")
- 
- //10 Optional chaining 
+
+//10 Optional chaining
 //?
+// const hotelWuxukuyaalaa={
+//     name:"haaracd Hotel",
+//     address:{
+//         city:"jigjiga"
+//     }
+// }
+// console.log(hotelWuxukuyaalaa.address.city)
+// const hotel1={name:"haaaracad Hotel", address:{city:"jigjiga"}}
+// const hottel2={name:"sayid Hotel"}
+// console.log(hottel2.address?.city)
+// const isticaamle={
+//     // hallodheh:(text)=>`soo dhawoow wll"${text}`,
+//     // hallodheh:(text)=>"soo dhawoow wll"+text
+// }
+// const isticaamle2={}
+// console.log(isticaamle.hallodheh?.("hamza"))
+// console.log(isticaamle2.hallodheh?.())
 // let user={
 //     id:1
 // }
@@ -101,7 +118,7 @@
 //error "cannot read properties of undefined"
 // let user={
 //     name:"hamza"
-//     // none address
+//    //none address
 // }
 // console.log(user.address.city)
 //undefined
@@ -111,7 +128,7 @@
 //     //city
 // }
 // console.log(user?.address?.city)
-//coorect 
+//coorect
 // let user={
 //     name:"hamza",
 //     address:{

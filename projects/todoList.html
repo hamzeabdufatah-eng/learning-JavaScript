@@ -40,23 +40,23 @@
   </body>
 </html>
 <script>
-  //     const form=document.getElementById("task-form")
-  // const input=document.getElementById("task-input")
-  // const taskList=document.getElementById("task-list")
-  // form.addEventListener("submit",function(e){
-  //     e.preventDefault();
+   const form=document.getElementById("task-form")
+  const input=document.getElementById("task-input")
+  const taskList=document.getElementById("task-list")
+  form.addEventListener("submit",function(e){
+      e.preventDefault();
 
-  // addTask(input.value)
-  //  input.value=``
-  // })
-  // function addTask(text){
-  //     const li=document.createElement("li")
-  //     li.innerHTML=`<span> ${text}</span><button class="delete-btn">x</button>`
-  //     taskList.appendChild(li);
+  addTask(input.value)
+   input.value=``
+  })
+  function addTask(text){
+      const li=document.createElement("li")
+      li.innerHTML=`<span> ${text}</span><button class="delete-btn">x</button>`
+      taskList.appendChild(li);
 
-  //     li.querySelector(".delete-btn").addEventListener("click",function(){
-  //         li.remove()
-  //     })
-  // }
+      li.querySelector(".delete-btn").addEventListener("click",function(){
+          li.remove()
+      })
+  }
  
 </script>
