@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      #wellcomeSection.container.active {
+        background-color: #1b2a25;
+        color: white;
+      }
+      body {
+        background-color:#B09576;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+      }
+      .container {
+        background-color: #23362E;
+        width: 300px;
+        padding: 30px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        margin-bottom: 40px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        width: 90%;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #8a765e;
+        border: none;
+        border-radius: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="loginFirst">
+      <h1>login</h1>
+      <input type="text" id="userName" placeholder="enter your name" required />
+      <button onclick="login()">login</button>
+    </div>
+    <div class="container" id="wellcomeSection" style="display: NONE">
+      <h2 id="wellcomeMessage"></h2>
+      <button onclick="logout()">logout</button>
+    </div>
+    <script>
+      window.onload = function () {
+        user = localStorage.getItem("username");
+        if (user) {
+          wellcomeM(user);
+        }
+      };
+      function login(e) {
+        let inputValue = document.getElementById("userName");
+        userName = inputValue.value;
+        if (userName.trim() === "") {
+          alert("please enter your name");
+        }
+        localStorage.setItem("username", userName);
+        location.reload();
+        console.log("name", userName);
+      }
+      function wellcomeM(name) {
+        document.getElementById("loginFirst").style.display = "none";
+        document.getElementById("wellcomeSection").style.display = "block";
+        let wellcomePage=document.getElementById("wellcomeSection");
+        wellcomePage.classList.add("active")
+        document.getElementById("wellcomeMessage").innerText = `kuso dhawoow New World:
+        ${name}`;
+    }
+      function logout() {
+        localStorage.removeItem("username");
+        location.reload();
+      }
+    </script>
+  </body>
+</html>

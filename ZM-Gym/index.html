@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mahuraan gym</title>
+     <link rel="stylesheet" href="style.css" /> 
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <!-- logo  -->
+        <a href="#" class="logo">Mahuraan<span>Gym</span></a>
+        <!-- navigation -->
+        <nav class="main-nav" id="mainNav">
+          <a href="#">Home</a>
+          <a href="#">Classes</a>
+          <a href="#">Membership</a>
+          <a href="#">Store</a>
+          <a href="#">Blog</a>
+        </nav>
+        <!-- header-actions -->
+        <a href="#" class="join-btn">Join Now</a>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Open menu"
+          type="button"
+        >
+          <span>☰</span>
+        </button>
+      </div>
+    </header>
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-container">
+        <!-- hero content -->
+        <div class="hero-content">
+          <span class="hero-label"> 🔥Transform Your Body & Mind</span>
+          <h1>BUILD YOUR <span>ULTIMATE PHYSIQUE.</span></h1>
+          <p>
+            Kusoo dhawoow Mahuraan gym. Tababar casri ah, trainers xirfad leh,
+            iyo workout programs loogu talagalay muruq dhisid iyo fitness.
+          </p>
+          <!-- hero buttons -->
+          <div class="hero-buttons">
+            <a href="#" class="hero-btn primary-btn">START FREE TRIAL</a>
+            <a href="#" class="hero-btn secondary-btn">VIEW SCHEDULE</a>
+          </div>
+        </div>
+        <!-- hero image -->
+        <div class="hero-image">
+          <img
+            src="/Mahuraan-Gym/images/Dumbbels.jpg"
+            alt="Mahuraan Gym athlete"
+          />
+          <div class="hero-badge">
+            <span>⭐</span>
+            <div>
+              <strong>Certified Fitness Hub</strong>
+              <small>Top Rated Gym</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Trust/Benefits -->
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-item">
+          <strong>500+</strong>
+          <span>Active Members</span>
+        </div>
+        <div class="stat-item">
+          <strong>15+</strong>
+          <span>Pro Trainers</span>
+        </div>
+        <div class="stat-item">
+          <strong>24/7</strong>
+          <span>Gym Access</span>
+        </div>
+        <div class="stat-item">
+          <strong>100%</strong>
+          <span>Fitness Focus</span>
+        </div>
+      </div>
+    </section>
+    <!-- Calculating Bmi -->
+    <section class="bmi-section">
+      <div class="bmi-container">
+        <div class="bmi-content">
+          <span class="section-label">🧱QUICK FITNESS CHECK</span>
+          <h2>Calculate Your BMI</h2>
+          <p>
+            Xisaabi Body Mass Index(BMI) kaaga siaad uogaato xaladaada guud ee
+            miisaankaaga.
+          </p>
+          <div class="bmi-form">
+            <div class="bmi-field">
+              <label for="hieght">Hieght(cm)</label>
+              <input id="hieght" type="number" placeholder="e.g. 175" />
+            </div>
+            <div class="bmi-field">
+              <label for="wieght">Wieght(kg)</label>
+              <input id="weight" type="number" placeholder="e.g. 68" />
+            </div>
+            <button type="button" id="calculateBmi">CALCULATE NOW</button>
+          </div>
+        </div>
+        <div class="bmi-result">
+          <span>Your Score</span>
+          <strong id="bmiValue">0</strong>
+          <small id="bmiCategory">Enter your details</small>
+        </div>
+      </div>
+    </section>
+    <!-- workout schedule -->
+    <section class="workout-section">
+      <div class="workout-container">
+        <div class="workout-heading">
+          <div>
+            <span class="section-label">🏋🏿TRAIN WITH PURPOSE</span>
+            <h2>WORKOUT SCHEDULE</h2>
+            <p>
+              Dooro workout-ka kugu haboon oo qorshee tababarkaaga si joogto ah.
+            </p>
+          </div>
+          <a href="#" class="workout-all-btn">VIEW ALL→</a>
+        </div>
+        <div class="workout-filters">
+          <button class="filter-btn active" data-filter="all">ALL</button>
+          <button class="filter-btn" data-filter="strength">STRENGTH</button>
+          <button class="filter-btn" data-filter="cardio">CARDIO</button>
+          <button class="filter-btn" data-filter="muscle">MUSCLE</button>
+        </div>
+        <div class="workout-grid">
+          <article class="workout-card" data-category="strength">
+            <div class="workout-card-top">
+              <span>MONDAY</span>
+              <strong>60 MIN</strong>
+            </div>
+            <h3>Strenght Training</h3>
+            <p>Chest•Shoulder•Triceps•</p>
+            <a href="#">VIEW WORKOUT</a>
+          </article>
+          <article class="workout-card" data-category="muscle">
+            <div class="workout-card-top">
+              <span>WEDNESDAY</span>
+              <strong>55 MIN</strong>
+            </div>
+            <h3>Back & Pull</h3>
+            <p>Back•Biceps•Rear Delts•</p>
+            <a href="#">VIEW WORKOUT</a>
+          </article>
+          <article class="workout-card" data-category="strength">
+            <div class="workout-card-top">
+              <span>FRIDAY</span>
+              <strong>60 MIN</strong>
+            </div>
+            <h3>Leg & Core</h3>
+            <p>Quads•Hamstring•Abs</p>
+            <a href="#">VIEW WORKOUT</a>
+          </article>
+          <article class="workout-card" data-category="cardio">
+            <div class="workout-card-top">
+              <span>SATURDAY</span>
+              <strong>40 MIN</strong>
+            </div>
+            <h3>Cardio Blast</h3>
+            <p>Running•Cycling•Conditioning</p>
+            <a href="#">VIEW WORKOUT</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- MEMBERSHIP -->
+    <section class="membership-section">
+      <div class="membership-container">
+        <div class="membership-heading">
+          <span class="section-label"> 💪MEMEBERSHIP</span>
+          <h2>Choose Your Plan</h2>
+          <p>
+            Dooro membersip-ka kugu haboon oo biloow eh safarkaaga fitnesska.
+          </p>
+        </div>
+        <div class="membership-grid">
+          <!-- Basic -->
+          <article class="membership-card">
+            <span class="plan-name">BASIC</span>
+            <h3>
+              <sup>ETB</sup>500
+              <small>/ month</small>
+            </h3>
+            <p class="plan-description">Ku haboon qofka bilaabaya gymka.</p>
+            <ul class="plan-features">
+              <li>✓ Gym Access</li>
+              <li>✓ Locker Access</li>
+              <li>✓ Basic Equipment</li>
+              <li>✓ Free Wi-fi</li>
+            </ul>
+            <a href="#" class="plan-btn">JOIN NOW→</a>
+          </article>
+          <!-- PRO -->
+          <article class="membership-card">
+            <span class="popular-badge">MOST POPULAR</span>
+            <span class="plan-name">PRO</span>
+            <h3>
+              <sup>ETB</sup>900
+              <small>/ month</small>
+            </h3>
+            <p class="plan-description">
+              Qorshe wanagzan oo loogu talagalay horumar joogto ah.
+            </p>
+            <ul class="plan-features">
+              <li>✓ Gym Access</li>
+              <li>✓ Locker Access</li>
+              <li>✓ Personal Trainer</li>
+              <li>✓ Group Classes</li>
+            </ul>
+            <a href="#" class="plan-btn">JOIN NOW→</a>
+          </article>
+          <!-- VIP -->
+          <article class="membership-card featured">
+            <span class="plan-name">VIP</span>
+            <h3>
+              <sup>ETB</sup>1500
+              <small>/ month</small>
+            </h3>
+            <p class="plan-description">Kibrad dhamaystiran oo premium ah.</p>
+            <ul class="plan-features">
+              <li>✓ Unlimited Gym Access</li>
+              <li>✓ Personal Trainer</li>
+              <li>✓ All Group Classes</li>
+              <li>✓ Nutrition Guidence</li>
+            </ul>
+            <a href="#" class="plan-btn">JOIN NOW→</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Categoreis -->
+    <section class="categories-section">
+      <div class="categories-container">
+        <div class="section-heading">
+          <span>Explore Our Collection</span>
+          <h2>Shop By Category</h2>
+          <p>Find the right equipment for your training</p>
+        </div>
+        <!-- categoreis grid -->
+        <div class="categories-grid">
+          <!-- dumbbels -->
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/Dumbells2.jpg" alt="Benches" />
+            </div>
+            <div class="category-content">
+              <h3>Dumbbells</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+          <!-- Barbells-->
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/Barbells.jpg" alt="Benches" />
+            </div>
+            <div class="category-content">
+              <h3>Barbells</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+          <!-- Benches -->
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/Adjustable bench.jpg" alt="Benches" />
+            </div>
+            <div class="category-content">
+              <h3>Benches</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+          <!-- Machines -->
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/creatine!5.png" alt="Benches" />
+            </div>
+
+            <div class="category-content">
+              <h3>Machines</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+          <!-- Cardio -->
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/Cardio.jpg" alt="Benches" />
+            </div>
+            <div class="category-content">
+              <h3>Cardio</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+          <a href="#" class="category-card">
+            <div class="category-image">
+              <img src="./images/Accessories.jpg" alt="Benches" />
+            </div>
+            <div class="category-content">
+              <h3>Accessories</h3>
+              <span>Shop Now</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Products -->
+    <section class="products">
+      <div class="products-container">
+        <div class="products-header">
+          <div>
+            <span class="products-label">OUR PRODUCTS </span>
+            <h2>Featured Products</h2>
+            <p>Premium equipment for your strongest perfomance.</p>
+          </div>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div id="productsContainer">
+          <!-- this will be post post of products-container  -->
+        </div>
+      </div>
+    </section>
+    <!-- Cart Panel -->
+    <div id="cartPanel" class="cart-panel">
+      <div class="cart-panel-container">
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+          <button id="closeCart">x</button>
+        </div>
+        <p class="cart-subtitle">Review your selected products</p>
+        <div id="cartItems">
+          <!--products will be added by java script-->
+        </div>
+        <div class="cart-footer">
+          <h3>Total:<span id="cartTotal">0</span>ETB</h3>
+          <button id="checkoutButton">Checkout</button>
+        </div>
+      </div>
+    </div>
+    <!-- promo CTA -->
+    <section class="promo-section">
+      <div class="promo-container">
+        <div class="promo-content">
+          <span class="promo-label">TRAIN HARD STAY STRONG.</span>
+          <h2>Everything You Need<br />To Build Your Gym.</h2>
+          <p>Shop quality gym equipment for home and commercial training.</p>
+          <a href="#" class="promo-btn">Shop All Equipment→ </a>
+        </div>
+        <div class="promo-shape">
+          <span>Mahuraan</span>
+          <strong>Gym</strong>
+        </div>
+      </div>
+    </section>
+    <!-- Java Script -->
+    <script src="script.js"></script>
+  </body>
+</html>

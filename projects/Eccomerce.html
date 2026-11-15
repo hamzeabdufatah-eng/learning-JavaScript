@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Deligation</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #ffff;
+        font-family: sans-serif;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background: #1a1616; 
+        padding: 20px;
+        width: 100%;
+        color: white;
+      }
+      .btn {
+        background: rgb(40, 37, 37);
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: 0.3s ease;
+      }
+      .btn:hover {
+        background: rgb(225, 23, 23);
+        transform: translateY(-2px);
+      }
+
+      #products-container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 12px auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .product-card {
+        color: black;
+        background: #ffffff;
+        box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 15px;
+        height: 100%;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        align-items: center;
+      }
+      /* .btn {
+        border: none;
+        border-radius: 5px;
+        padding: 8px;
+        margin-top: 5px;
+        background-color: rgb(21, 18, 18);
+        color: white;
+      } */
+      .product-card {
+        /* font-size: 28px; */
+        font-weight: bold;
+      }
+      .product-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        margin-bottom: 10px;
+      }
+      .cart-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        position: fixed;
+        background-color: rgb(84, 35, 35);
+        box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.2);
+        color: white;
+        padding: 25px;
+        box-sizing: border-box;
+        top: 0;
+        right: 0;
+        width: 350px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button class="btn" id="add-to-cart" onclick="addToCart">Cart</button>
+    </nav>
+    <div id="products-container"></div>
+    <div class="cart-container">
+      <h2>Your Cart</h2>
+      <div id="cart"></div>
+      <h3>Total: <span id="total">0</span> ETB</h3>
+    </div>
+    <script>
+      const conatiner = document.getElementById("products-container");
+const addToCart=document.getElementById("add-to-cart")
+      const products = [
+        {
+          id: 1,
+          name: "Dumbbell Set",
+          price: 1500,
+          category: "Dumbbells",
+          image: "/Mahuraan-Gym/images/Dumbbels.jpg",
+          stock: 20,
+        },
+        {
+          id: 2,
+          name: "Olympic Barbbell",
+          price: 3000,
+          category: "Barbbells",
+          image: "/Mahuraan-Gym/images/Barbells.2.jpg",
+          stock: 7,
+        },
+        {
+          id: 3,
+          name: "Gym Bench",
+          price: 5000,
+          category: "Benches",
+          image: "/Mahuraan-Gym/images/Benches.jpg",
+          stock: 2,
+        },
+        {
+          id: 4,
+          name: "Treadmill",
+          price: 18000,
+          category: "Cardio",
+          image: "/Mahuraan-Gym/images/Cardio.jpg",
+          stock: 8,
+        },
+        {
+          id: 5,
+          name: "Squat Rack",
+          price: 12000,
+          category: "Machines",
+          image: "/Mahuraan-Gym/images/Bcaa.jpg",
+          stock: 10,
+        },
+        {
+          id: 6,
+          name: "Gym Gloves",
+          price: 800,
+          category: "Accessories",
+          image: "/Mahuraan-Gym/images/61dkuoFvh-L._AC_.jpg",
+          stock: 0,
+        },
+      ];
+      let cart = [];
+
+      function diplayProducts() {
+        conatiner.innerHTML = products
+          .map(
+            (product) =>
+              `<div class="product-card">
+                <img src="${product.image}" alt="${product.name}">
+                <h3 class="h3-product">${product.name}</h3>
+                <p>${product.price}ETB</p>
+                <p>
+                  ${
+                    product.stock > 0
+                      ? `Stock:${product.stock}`
+                      : `<b style="color:red;">Out of Stock `
+                  }
+                    </p>
+                    <button class="btn" data-id="${product.id}"
+                    ${product.stock === 0 ? "disabled" : ""}>
+                    ${product.stock > 0 ? "Add to Cart" : "Out of Stock"}
+                    </button>
+                      </div> `,
+          )
+          .join("");
+      }
+      diplayProducts();
+
+      function AddToCart() {}
+    </script>
+  </body>
+</html>

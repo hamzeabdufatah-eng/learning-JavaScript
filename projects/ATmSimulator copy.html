@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <style>
+      body {
+        font-family: arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+        margin: 0;
+      }
+      .container {
+        padding: 30px;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease-in;
+      }
+      /* .container:hover {
+        /* transform: translateY(-8px); */
+      /* } */
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      h2 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>wellcome the bank</h2>
+      <p>guji buttonka siaad lacag ula baxdo bankgaaga</p>
+      <button onclick="startATM()">labax lacag</button>
+    </div>
+    <script>
+      function startATM() {
+        let balance = 500;
+        let iskuday=0
+        while (true) {
+          let doorasho = prompt(`hadhaagaaga hadda waa:$${balance}\n\nDooro shaqada aad rabto:\n1:labax`);
+          if (input === null) {
+            alert("shaqadi waa lajoojiyay mamcmiil");
+            break;
+          }
+          let withdrowalAmount = Number(input);
+          if (withdrowalAmount <= balance && withdrowalAmount > 0) {
+            balance -= withdrowalAmount;
+            alert(
+              `waad ku guulaysatay macmiil!\n\nLacagta baxday:$${withdrowalAmount}\nBaaqiga cusub:$${balance}`,
+            );
+          break
+        }else{
+          alert("fadlan iskuday markale!")
+        }
+        }
+      }
+     
+    </script>
+  </body>
+</html>

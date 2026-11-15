@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gues the number</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ddd;
+      }
+      .gues-container {
+        background-color: bisque;
+        padding: 30px;
+        max-width: 400px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4px;
+      }
+
+      h1 {
+        font-size: 40px;
+        line-height: 0.2rem;
+        text-decoration-line: underline;
+        padding: 8px 9px;
+        color: rgb(143, 51, 51);
+      }
+      p {
+        font-size: 18px;
+        color: rgb(116, 81, 81);
+        padding: 5px 10px;
+      }
+      input {
+        width: 70%;
+        padding: 15px 15px;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+      button {
+        padding: 15px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+      .feedback {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 5px;
+        padding: 6px 8px;
+      }
+      .attemts {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 0px;
+        padding: 4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gues-container">
+      <h1>gues the number</h1>
+      <p>i am thinking the number between 1 and 100</p>
+      <div class="game-area">
+        <input
+          type="number"
+          placeholder="Enter the gues number"
+          class="gues-input"
+        />
+        <button type="submit" id="submit-gues">Submit</button>
+        <button type="submit" id="new-game">new game</button>
+      </div>
+      <div id="feedback"></div>
+      <div id="attemts"></div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let attemts;
+        let targetNumber;
+        let maxAttemts = 10;
+        const sumbitGues = document.getElementById("submit-gues");
+        const guesInput = document.querySelector(".gues-input");
+        const newGame = document.getElementById("new-game");
+        const feeback = document.getElementById("feedback");
+        const DisplayAttemts = document.getElementById("attemts");
+        function iniGame() {
+          targetNumber = Math.floor(Math.random() * 100) + 1;
+          attemts = 0;
+          feeback.textContent = "";
+          DisplayAttemts.textContent = `${attemts}`;
+          guesInput.value = "";
+          feeback.textContent="start"
+          sumbitGues.disabled = false;
+        }
+        function checkGues() {
+          const userGuess = parseInt(guesInput.value);
+          if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+            feeback.textContent = `please enter a valid number between 1 and 100`;
+            return;
+          }
+
+          attemts++;
+          DisplayAttemts.textContent = `Attemts:${attemts}`;
+
+          if (userGuess === targetNumber) {
+            feeback.textContent = `🎉congrats you guesed it:${attemts}`;
+            sumbitGues.disabled = true;
+          } else if (attemts >= maxAttemts) {
+            feeback.textContent = `game over the number was:${targetNumber}try again`;
+            sumbitGues.disabled = true;
+            return;
+          } else {
+            const hint = userGuess > targetNumber ? "too high" : "too low";
+            feeback.textContent = `${hint}try again`;
+          }
+          guesInput.value = "";
+        }
+        iniGame();
+        sumbitGues.addEventListener("click", checkGues);
+        newGame.addEventListener("click", iniGame);
+      });
+    </script>
+  </body>
+</html>

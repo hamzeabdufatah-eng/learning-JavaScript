@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #19191b, #331354);
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: #fff;
+      }
+      .calculate-card {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 450px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      h1 {
+        font-size: 2.2rem;
+        text-align: center;
+      }
+      .subtitle {
+        text-align: center;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+      }
+      .input-group {
+        margin-bottom: 1.5rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      input {
+        width: 100%;
+        padding: 1rem;
+        bottom: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transform: all 0.3 ease;
+      }
+      input::placeholder {
+        color: rgba(0, 0, 0, 0.6);
+      }
+      input:focus {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      button {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        margin: 1.5rem;
+        transition: all 0.3s;
+      }
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+      .result-container {
+        text-align: center;
+        margin: 2rem;
+      }
+      .result-value {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        transition: all 0.53s ease;
+      }
+      .result-category {
+        font-size: 3.5rem;
+        font-weight: 500;
+        opacity: 0.9;
+        transition: all 0.5s ease;
+      }
+      .BMI-scale {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+        margin-top: 2rem;
+      }
+      .scale-item {
+        padding: 0.7rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .scale-item span {
+        display: block;
+        font-size: 0.7rem;
+        opacity: 0.8;
+        margin-top: 0.3rem;
+      }
+      .scale-item-under-weight {
+        background: rgba(74, 144, 226, 0.3);
+        padding: 10px 10px;
+
+        border-radius: 8px;
+      }
+      .scale-item-normal-weight {
+        background: rgba(46, 213, 115, 0.3);
+        padding: 10px 8px;
+
+        border-radius: 8px;
+      }
+      .scale-item-over-weight {
+        background: rgba(255, 165, 0, 0.3);
+      }
+      .scale-item-obese {
+        background: rgba(255, 71, 87, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculate-container">
+      <div class="calculate-card">
+        <h1>BMI Calculator</h1>
+        <p>Check your body mass index</p>
+        <div class="input-group">
+          <label for="hieght">Hieght(cm)</label>
+          <input type="number" id="hieght" placeholder="e.g 160" />
+        </div>
+        <div class="input-group">
+          <label for="wieght">Wieght(kg)</label>
+          <input type="number" id="wieght" placeholder="e.g 70" />
+        </div>
+        <button id="calculate-button">Calculate BMI</button>
+        <div class="result-container">
+          <div class="result-value"></div>
+          <div class="result-caregory" id="BMI-category">Enter your dEtails</div>
+        </div>
+        <div class="BMI-scale">
+          <div class="scale-item-under-weight">
+            Underweight<span>18.5</span>
+          </div>
+          <div class="scale-item-normal-weight">
+            Normal<span>18.5-24.9</span>
+          </div>
+          <div class="scale-item-over-weight">
+            Overweight<span>25-29.9</span>
+          </div>
+          <div class="scale-item-obese">Obese<span> >30</span></div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .container {
+        max-width: 450px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        height: 90vh;
+        box-shadow: 4px 10px 15px -1px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+      }
+      form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      input {
+        padding: 10px 20px;
+        border: 1px solid rgba(61, 58, 58, 0.3);
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        outline: none;
+      }
+      input:focus {
+        border-color: rgba(61, 10, 98, 0.44);
+        box-shadow: 4px 10px 15px -1px rgba(0, 0, 0, 0.15);
+      }
+      #c {
+        display: flex;
+        gap: 20px;
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        /* background-color: red; */
+        border-radius: 10px;
+        box-shadow: 4px 10px 15px -1px rgba(0, 0, 0, 0.1);
+      }
+      #btn-add {
+        background-color: rgba(61, 58, 58, 0.3);
+        font-weight: 600;
+        font-size: 16px;
+      }
+      #btn-cn {
+        background-color: red;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="container">
+        <input id="name" type="text" placeholder="please enter your name" />
+        <input
+          id="number"
+          type="number"
+          placeholder="please enter your phone"
+        />
+        <div id="c">
+          <button type="button" id="btn-cn">cancel</button>
+          <button type="submit" id="btn-add">confirm</button>
+        </div>
+      </form>
+    </div>
+    <div id="result"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let userToLoacl = [];
+        const form = document.getElementById("container");
+        const inputName = document.getElementById("name");
+        const inputNumber = document.getElementById("number");
+        const result = document.getElementById("result");
+        function renderB(e) {
+          e.preventDefault();
+          const user = {
+            magaca: inputName.value,
+            lambarka: inputNumber.value,
+          };
+          userToLoacl.push(user);
+          localSt();
+          localGet();
+        }
+        function localSt() {
+          localStorage.setItem("form", JSON.stringify(userToLoacl));
+        }
+        ini();
+        function ini() {
+          form.addEventListener("submit", renderB);
+        }
+        function localGet() {
+          const saveDate = JSON.parse(localStorage.getItem("form"));
+          console.log(saveDate);
+        }
+      });
+    </script>
+  </body>
+</html>

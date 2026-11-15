@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+      }
+      #formList {
+        width: 300px;
+        height: auto;
+        padding-bottom: 20px;
+        min-height: 40vh;
+        text-align: center;
+        background-color: #cfc5c3;
+        /* border: px solid #233; */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        border-radius: 8px;
+
+        /* justify-content: center; */
+      }
+      #inputList {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        width: 80%;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        border: none;
+      }
+      button {
+        width: 40%;
+        border-radius: 5px;
+        border: none;
+        background-color: #7c87ba;
+        padding: 10px;
+        transition: 0.3s ease;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(1.1);
+        color: aliceblue;
+      }
+      #taskList {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+        width: 100%;
+      }
+      #taskList li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        color: #000;
+      }
+      span{
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+    min-width: 20vw;
+margin: 0px 0 auto 10px;
+        color: white;
+        border: none;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      #clearAll{
+      
+      }
+    </style>
+  </head>
+  <body>
+    <form id="formList">
+      <input
+        id="inputList"
+        type="text"
+        placeholder="enter your name"
+        required
+      />
+     <span> <button type="submit">send</button
+      ><button type="button" id="clearAll">clear all</button>
+    </span>
+      <ul id="taskList"></ul>
+    </form>
+    <script>
+      const form = document.getElementById("formList");
+      const inputList = document.getElementById("inputList");
+      const taskList = document.getElementById("taskList");
+      const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      const clearAllBtn=document.getElementById("clearAll")
+      tasks.forEach((task) => {
+        addList(task);
+      });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = inputList.value;
+        addList(text);
+        tasks.push(text);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        inputList.value = "";
+      });
+      function addList(text) {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${text}</span>
+        <button type="button" class="deleteBtn">x</button>`;
+        taskList.appendChild(li);
+        li.querySelector(".deleteBtn").addEventListener("click", function () {
+          li.remove();
+          const index = tasks.indexOf(text);
+          if (index > -1) {
+            tasks.splice(index, 1);
+          }
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+        });
+      }
+      clearAllBtn.addEventListener("click",()=>{
+        tasks.length=0;
+        localStorage.removeItem("tasks");
+        taskList.innerHTML=""
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .promo-container{
+    max-width: 1200px;
+    min-height: 320px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    margin: 0 auto ;
+    padding: 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #1b1b1b;
+  }
+  .promo-shape {
+  position: absolute;
+  right: -40px;
+  bottom: -60px;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 70px solid rgba(230, 57, 70, 0.08);
+  border-radius: 50%;
+  transform: rotate(-10deg);
+}
+.promo-section{
+  width: 100%;
+  padding: 80px 24px;
+  background: #111111;
+}
+span{
+  color: #555555;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 5px;
+}
+strong{
+  font-size: 55px;
+  color: #e369;
+  line-height: 1;
+}
+</style>
+<body>
+  <div class="promo-section">
+  <div class="promo-container">
+  <div class="promo-shape">
+    <span>Mahuraan</span>
+    <strong>Gym</strong>
+  </div>
+  </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gues the number</title>
+    <style>
+      body {
+        background-color: #f0f2ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+      .game-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+      }
+
+      h1 {
+        color: #2c3e50;
+      }
+      .game-area {
+        margin-bottom: 1rem;
+      }
+      input {
+        padding: 0.7rem;
+        width: 60%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+      }
+      button {
+        padding: 0.7rem 1.25rem;
+        border: none;
+        background-color: #3498b3;
+        box-sizing: 5px;
+        color: white;
+        cursor: pointer;
+      }
+      #new-game {
+        margin-top: 0.5rem;
+      }
+      .feedback {
+        margin: 1rem;
+        font-size: 1.1rem;
+        min-height: 1.5rem;
+      }
+      .attemts {
+        font-weight: bold;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Gues the number</h1>
+      <p>I'm thinking of a number between 1 and 100</p>
+      <div class="game-area">
+        <input type="number" id="gues-input" placeholder="Enter the gues" />
+        <button id="submit-gues">Submit</button>
+        <button id="new-game">New game</button>
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="attemts" id="attemts"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

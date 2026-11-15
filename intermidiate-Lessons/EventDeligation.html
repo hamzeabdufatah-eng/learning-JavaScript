@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Deligation</title>
+  </head>
+  <body>
+    <!-- <div id="products">
+      <button 
+      data-id="101" 
+      data-name="Dumbbell" 
+      data-price="5000">
+        Buy Dumbbell
+      </button>
+      <button 
+      data-id="102" 
+      data-name="Bench" 
+      data-price="9000">
+        Buy Bench
+      </button>
+      <button 
+      data-id="103" 
+      data-name="Mat"
+       data-price="10000">Buy Mat</button>
+      <button
+       data-id="104"
+        data-name="protein"
+         data-price="19000">
+        Buy Protein
+      </button>
+    </div> -->
+    <div id="products">
+      <button data-product="Dumbbell">
+        <span>Buy Dumbbell</span>
+      </button>
+      <button data-product="Bench">
+        <span>Buy Bench</span>
+      </button>
+      <button data-product="Mat">
+        <span>Buy Mat</span>
+      </button>
+    </div>
+    <script>
+      const products = document.querySelector("#products");
+      products.addEventListener("click", function (e) {
+        const button = e.target.closest("button");
+        if (!button) {
+          return;
+        }
+        const product = button.dataset.product;
+        console.log("Adding to cart", product);
+      });
+
+      //   products.addEventListener("click", function (event) {
+      //     if (event.target.tagName === "BUTTON") {
+      //       console.log(
+      //         event.target.dataset.id,
+      //         event.target.dataset.price,
+      //         event.target.dataset.name,
+      //       );
+      //     }
+      //   });
+      // document.addEventListener("click",function(e){
+      //     if(e.target.tagName==="BUTTON"){
+      //         console.log(`button clicked:${e.target.textContent}`)
+      //     }
+      // })
+      //   document.addEventListener("click", function (e) {
+      //     if (e.target && e.target.tagName) {
+      //     const targetName=e.target.tagName;
+      //     const text=e.target.textContent.trim();
+      //     console.log(`cliked:${targetName}|"${text}"`)
+      //     }
+      //   });
+      //   const buttons = document.querySelectorAll("button");
+      //   buttons.forEach(function (button) {
+      //     button.addEventListener("click", function () {
+      //         const name=button.textContent;
+      //       console.log(`Button Clicked:${name}`);
+      //     });
+      //   });
+    </script>
+  </body>
+</html>

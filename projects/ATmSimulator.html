@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+   <title>ATM</title>
+   <style>
+      body {
+        font-family: arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+        margin: 0;
+      }
+      .container {
+        padding: 30px;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease-in;
+      }
+      .container:hover {
+         transform: translateY(-8px); */
+       }
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      h2 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>ATM BANK</h2>
+      <p>guji buttonka siaad lacag ula baxdo bankgaaga jeehdin</p>
+      <button onclick="startATM()">labax lacag</button>
+    </div>
+    <script>
+      function startATM() {
+        let balance = 900;
+        let trayAgain = 0;
+        while (true) {
+          let choose = prompt(
+            `hadhaagaaga hadda waa: $${balance}\n\nDooro shaqada rabto:\n1:labax lacag(withdraw)\n2:dhigo lacag(deposit)`,
+          );
+          if (choose === null) {
+            alert("shaqada waa lajoojiyay macmiil");
+            break;
+          }
+          // part 1 withdraw
+          if (choose === "1") {
+            let input = prompt(`hadhaagaaga hadda waa $${balance}`);
+            if (input === null) {
+              alert("sahqadii waa lajoojiyay macmiil");
+              break;
+            }
+            let withdrowalAmount = Number(input);
+            if (withdrowalAmount <= balance && withdrowalAmount > 0) {
+              balance -= withdrowalAmount;
+              alert(
+                `waad guulaysatay macmiil!\n\nLacagta baxday:$${withdrowalAmount}\nnBaaqiga cusub:$${balance}`,
+              );
+              trayAgain = 0;
+            } else {
+              trayAgain++;
+              alert(
+                `fadlan iskuday markale!(isku-dayga khadlan: ${trayAgain}/3)`,
+              );
+            }
+          }
+          // part 2 deposit
+          else if (choose === "2") {
+            let input = prompt(
+              `baaqigaaga hadda waa:$${balance}.\n\nImisaa rabtaa inaa kudarsato(deposit)?`,
+            );
+            if (input === null) {
+              alert("shaqadii waa lajoojiyay macmiil");
+              break;
+            }
+            let depositAmount = Number(input);
+            if (depositAmount > 0) {
+              balance += depositAmount;
+              alert(
+                `waad guulaysatay macmiil!\n\nLacagta soo gashay:$${depositAmount}\nnBaaqiga cusub:$${balance}`,
+              );
+            }
+          }
+          // hadii qofku doorto waxan 1 ama 2 ahayn
+          else {
+            trayAgain++;
+            alert(
+              `fadlan dooro 1 ama 2 kaliya!(isku-dayga khaldan:${trayAgain}/3)`,
+            );
+          }
+          // codsiga break ga sadexda jeer eh
+          if (trayAgain >= 3) {
+            alert(
+              "amniga dartiis shaqadaada waa lajoojiyay maadaamo sadex jeer oo iskuxigta iskuday khaldan samaysay!",
+            );
+            break;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

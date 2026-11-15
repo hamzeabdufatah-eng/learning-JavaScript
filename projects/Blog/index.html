@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="shortcut-icon" href="#" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Blog</title>
+    <style>
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --danger-color: #f72585;
+        --light-color: #f8f9fa;
+        --dark-color: #122529;
+        --gray-color: #6c757d;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        background-color: #f5f5f5;
+        color: var(--dark-color);
+        padding: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px 15px;
+      }
+      #newPostBtn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+      }
+      header {
+        text-align: center;
+        margin: 20px auto;
+      }
+      h1 {
+        font-size: 28px;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+      .btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+      .btn-danger {
+        background-color: var(--danger-color);
+      }
+      .btn-outline {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+      }
+      .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+      .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+      .post-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+      .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0, 0.15);
+      }
+      .post-img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+      }
+      .post-content {
+        padding: 20px;
+      }
+      .post-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--dark-color);
+      }
+      .post-desc {
+        color: var(--gray-color);
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .post-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 0 15px;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1000;
+      }
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: white;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transform: translateY(-20px);
+        transition: var(--transition);
+      }
+      .modal.active .modal-content {
+        transform: translateY(0);
+      }
+      .modal-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--gray-color);
+      }
+      .modal-body {
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .modal-footer {
+        padding: 20px;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      .empty-state {
+        text-align: center;
+        padding: 50px 20px;
+        color: var(--gray-color);
+      }
+      @media (max-width: 768px) {
+        .post-grid {
+          grid-template-columns: repeat(1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>My Simple Blog</h1>
+        <button id="newPostBtn">Create New Post</button>
+      </header>
+      <div id="postsContainer" class="post-grid">
+        <!-- posts will be inserted here by javaScript -->
+      </div>
+      <!-- blog form model -->
+      <div id="blogModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle">New Blog Post</h2>
+            <button class="close-btn">&times;</button>
+          </div>
+          <form id="blogForm">
+            <div class="modal-body">
+              <input type="hidden" id="postId" />
+              <div class="form-group">
+                <label for="title">title</label>
+                <input type="text" class="form-control" id="title" required />
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <!-- <input type="text" class="form-control" id="description" required /> -->
+                <textarea
+                  class="form-control"
+                  id="description"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="image">Image URL</label>
+                <input type="text" class="form-control" id="image" />
+                <img id="imagePreview" width="200" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn-outline" id="cancelBtn">
+                Cancel
+              </button>
+              <button type="submit" class="btn">Save Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- View post modal -->
+      <div id="viewModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="viewModalTitle">Post Details</h2>
+            <button class="close-btn">&times;</button>
+          </div>
+          <div class="modal-body" id="viewModalBody">
+            <!-- content will be inserted by javaScript -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" id="closeViewBtn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/projects/Blog/script.js"></script>
+  </body>
+</html>

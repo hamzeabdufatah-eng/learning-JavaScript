@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Deligation</title>
+  </head>
+  <body>
+    <div id="products">
+      <div class="product">
+        <h3>Dumbbell</h3>
+        <p>5000 ETB</p>
+        <button data-id="1">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>Bench</h3>
+        <p>8000 ETB</p>
+        <button data-id="2">Add to Cart</button>
+      </div>
+      <div class="product">
+        <h3>Yoga Mat</h3>
+        <p>15000 ETB</p>
+        <button data-id="3">Add to Cart</button>
+      </div>
+    </div>
+    <hr />
+    <h2>Your Cart</h2>
+    <div id="cart"></div>
+    <h3>Total: <span id="total">0</span> ETB</h3>
+    <script>
+      const products = document.querySelector("#products");
+      const cartElement = document.querySelector("#cart");
+      const totalElement = document.querySelector("#total");
+      const productsData = [
+        {
+          id: 1,
+          name: "Dumbbell",
+          price: 6000,
+        },
+        {
+          id: 2,
+          name: "Bench",
+          price: 16000,
+        },
+        {
+          id: 3,
+          name: "Yoga Mat",
+          price: 19000,
+        },
+      ];
+      const cart = [];
+      function renderCart() {
+        cartElement.innerHTML = "";
+        let total = 0;
+        cart.forEach((item) => {
+          total += item.price * item.quantity;
+          cartElement.innerHTML += `
+            <div class="div-cart">
+                <h3>${item.name}</h3>
+                <p>${item.price}ETB</p>
+                <button data-action="minus" data-id="${item.id}">-</button>
+                <span>${item.quantity}</span>
+                <button data-action="plus" data-id="${item.id}">+</button>
+                <button data-action="delete" data-id="${item.id}">delete</button>
+                </div>
+            `;
+        });
+        totalElement.textContent = total;
+      }
+
+      products.addEventListener("click", (event) => {
+        const button = event.target.closest("button");
+        if (!button) {
+          return;
+        }
+        const id = Number(button.dataset.id);
+        const product = productsData.find((item) => item.id === id);
+        const existingProducts = cart.find((item) => item.id === id);
+        if (existingProducts) {
+          existingProducts.quantity++;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+        renderCart();
+      });
+      cartElement.addEventListener("click", function (event) {
+        const button = event.target.closest("button");
+        if (!button) return;
+        const id = Number(button.dataset.id);
+        const action = button.dataset.action;
+
+        const item = cart.find((item) => item.id === id);
+        if (action === "plus") {
+          item.quantity++;
+        }
+        if (action === "minus") {
+          item.quantity--;
+          if (item.quantity === 0) {
+            const index = cart.findIndex((item) => item.id === id);
+            cart.splice(index, 1);
+          }
+        }
+        if (action === "delete") {
+          const index = cart.findIndex((item) => item.id === id);
+          cart.splice(index, 1);
+        }
+        renderCart();
+      });
+    </script>
+  </body>
+</html>

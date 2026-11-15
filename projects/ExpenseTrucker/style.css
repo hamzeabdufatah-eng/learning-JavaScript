@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --b-color: #f8fafc;
+  --tex-color: #334155;
+  --heading-color: #0f172a;
+  --income-color: #10b981;
+  --expense-color: #ef4444;
+  --saving-color: #6366f1;
+  --btn-color: #4f46e5;
+  --input-border: #cbd5e1;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  margin: 0;
+}
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px;
+}
+h1,
+h2 {
+  color: #0f172a;
+}
+#summary {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card-balance,
+.card-expense,
+.card-income {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  flex: 1;
+}
+.card-balance h3 {
+  color: #6366f1;
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.card-expense h3 {
+  color: #6366f1;
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.card-income h3 {
+  color: #6366f1;
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.card-balance p,
+.card-expense p,
+.card-income p {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1e293b;
+}
+.transection-form {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  margin-bottom: 25px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+.form-row .form-group {
+  flex: 1;
+}
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #334155;
+}
+input,
+select {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  padding: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus,
+select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+}
+#add-transection {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+#add-transection:hover {
+  background-color: #4338ca;
+}
+#cancel-button {
+  background-color: #e2e8f0;
+  color: #334155;
+}
+#cancel-button:hover {
+  background-color: #cbd5e1;
+}
+.transections {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+#transection-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+#transection-table th:hover {
+  text-decoration: underline;
+  text-decoration-color: #3a548a;
+  text-underline-offset: 6px;
+}
+#transection-table th,
+#transection-table td {
+  padding: 12px;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+#transection-table th {
+  /* background-color: #1e293b; */
+  color: var(--tex-color);
+}
+.no-transection {
+  padding: 25px;
+  text-align: center;
+  font-size: 16px;
+}
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  #summary {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .transections {
+    overflow-x: auto;
+  }
+}
