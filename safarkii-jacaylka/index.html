@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sida Jacaylku u Samaysmo & Fariin Jacayl</title>
+    <!-- Soo dejinta Tailwind CSS iyo Font-ka Google (Plus Jakarta Sans & Playfair Display) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Habaynta Midabada iyo Qoraalka Guud */
+        :root {
+            --primary-rose: #e11d48;
+            --deep-crimson: #9f1239;
+            --soft-blush: #fff1f2;
+            --warm-cream: #fffbeb;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 45%, #fff7ed 100%);
+            color: #4c0519;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Naqshadda Kaararka Dhaldhalaalaya (Glassmorphism) */
+        .romantic-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 228, 230, 0.9);
+            box-shadow: 0 15px 35px -5px rgba(225, 29, 72, 0.08), 0 8px 15px -6px rgba(159, 18, 57, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .romantic-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 45px -5px rgba(225, 29, 72, 0.16);
+            border-color: #fda4af;
+        }
+
+        /* Wadnayaasha Duulaya ee Gadaal (Background Floating Hearts) */
+        .bg-hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(244, 63, 94, 0.18);
+            animation: floatUp linear infinite;
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.7;
+            }
+            85% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Wadnayaasha Qarxa marka la riixo "Dir Jacayl" */
+        .burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            font-size: 1.8rem;
+            animation: burstFly 2.2s ease-out forwards;
+        }
+
+        @keyframes burstFly {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Garaaca Wadnaha (Pulse Animation) */
+        .heartbeat {
+            animation: beat 1.6s infinite ease-in-out;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.12); }
+            45% { transform: scale(0.98); }
+            65% { transform: scale(1.08); }
+        }
+
+        /* Qurxinta Sanduuqa Qoraalka la tafatiri karo */
+        .editable-message:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.2);
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-rose-200 selection:text-rose-900">
+
+    <!-- Gadaasha Wadnayaasha Duulaya -->
+    <div class="bg-hearts-container" id="bgHearts"></div>
+
+    <!-- Farriin Ogeysiis ah (Toast Notification) -->
+    <div id="toast" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 transform -translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-rose-900 text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-3 text-sm font-medium border border-rose-700">
+            <span class="text-lg">💖</span>
+            <span id="toastText">Fariinta waa la koobiyeeyay!</span>
+        </div>
+    </div>
+
+    <!-- Nuxurka Ugu Weyn ee Bogga -->
+    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        
+        <!-- Qaybta Kore (Hero Header) -->
+        <header class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/90 border border-rose-200 text-rose-700 text-sm font-semibold mb-6 shadow-sm">
+                <span class="heartbeat inline-block">❤️</span>
+                <span>Safarka Qalbiga & Dareenka</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-rose-950 tracking-tight leading-tight mb-6">
+                Sida Jacaylku u Samaysmo <span class="text-rose-600 italic block sm:inline">&amp; Fariin Jacayl</span>
+            </h1>
+            
+            <p class="text-base sm:text-lg text-rose-800/80 leading-relaxed max-w-2xl mx-auto">
+                Jacaylka dhabta ahi maaha mid hal habeen ku dhasha; waa geed si tartiib ah u baxa, una baahan daryeel, kalsooni iyo is-faham qoto dheer.
+            </p>
+        </header>
+
+        <!-- Qaybta 1aad: 4-ta Marxaladood ee Jacaylka -->
+        <section class="mb-20">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-rose-600">Tillaabo Tillaabo</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-rose-950 mt-1">4-ta Marxaladood ee Jacaylka</h2>
+                </div>
+                <p class="text-sm text-rose-700/75">Guji kaararka si aad u aragto faahfaahinta</p>
+            </div>
+
+            <!-- Grid-ka 4-ta Kaar -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <!-- Marxaladda 1aad -->
+                <article class="romantic-card rounded-3xl p-7 sm:p-8 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-rose-100/70 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 text-white flex items-center justify-center text-xl shadow-md">
+                                ✨
+                            </span>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-700">Marxaladda 01</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-rose-950 mb-3">
+                            Soo-jiidashada Hore
+                        </h3>
+                        <p class="text-rose-900/80 text-sm sm:text-base leading-relaxed">
+                            Waxay ka billaabataa aragtida koowaad, dhoolla-caddaynta, qaabka uu qofku u hadlo, ama dabeecaddiisa quruxda badan ee qalbigaaga soo jiidata. Waa ilayska ugu horreeya ee shida xiisaha.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Marxaladda 2aad -->
+                <article class="romantic-card rounded-3xl p-7 sm:p-8 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-amber-100/60 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 text-white flex items-center justify-center text-xl shadow-md">
+                                💬
+                            </span>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-700">Marxaladda 02</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-rose-950 mb-3">
+                            Isbarashada &amp; Wada-sheekaysiga
+                        </h3>
+                        <p class="text-rose-900/80 text-sm sm:text-base leading-relaxed">
+                            Waa marxaladda labada qof ay si dhab ah isku bartaan, ogaadaan waxyaabaha ay ka midaysan yihiin, wadaagaan sheekooyin, kaftan iyo qosol. Halkan ayaa saldhigga jacaylka la dhigaa.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Marxaladda 3aad -->
+                <article class="romantic-card rounded-3xl p-7 sm:p-8 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-rose-100/70 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-600 to-red-700 text-white flex items-center justify-center text-xl shadow-md">
+                                🤝
+                            </span>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-700">Marxaladda 03</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-rose-950 mb-3">
+                            Dhisidda Kalsoonida
+                        </h3>
+                        <p class="text-rose-900/80 text-sm sm:text-base leading-relaxed">
+                            Marka la isu dhowaado, waxaa dhasha kalsooni buuxda iyo nabadgelyo dareen. Qof walba wuxuu dareemaa inuu si xor ah u cabbiri karo dareenkiisa isagoon wax cabsi ama shaki ah qabin.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Marxaladda 4aad -->
+                <article class="romantic-card rounded-3xl p-7 sm:p-8 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-red-100/70 group-hover:scale-125 transition-transform duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-600 to-rose-900 text-white flex items-center justify-center text-xl shadow-md">
+                                💞
+                            </span>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-700">Marxaladda 04</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-rose-950 mb-3">
+                            Qoto-dheeraanshaha Dareenka
+                        </h3>
+                        <p class="text-rose-900/80 text-sm sm:text-base leading-relaxed">
+                            Marxaladdan waa halka ay xididdada jacaylku ku adkaadaan. Labada qalbi way isku baahdaan, waxaana dhasha dareen ah in noloshaadu ay dhammaystiran tahay marka qofkaas uu kula joogo.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Qaybta 2aad: Kaarka Fariinta Jacaylka (Interactive Love Message Card) -->
+        <section class="max-w-3xl mx-auto">
+            <div class="rounded-[2rem] p-1 bg-gradient-to-br from-rose-400 via-pink-500 to-red-700 shadow-2xl">
+                <div class="bg-gradient-to-b from-white to-rose-50/95 rounded-[1.85rem] p-7 sm:p-10 text-center relative overflow-hidden">
+                    
+                    <!-- Qurxin Geesaha ah -->
+                    <div class="text-rose-300/40 text-6xl serif-font absolute top-4 left-6 select-none">“</div>
+                    <div class="text-rose-300/40 text-6xl serif-font absolute bottom-2 right-6 select-none">”</div>
+
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider mb-4">
+                        <span>💌</span>
+                        <span>Fariin Gaar ah oo Qalbiga ka Timid</span>
+                    </div>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-rose-950 mb-3">
+                        U Dir Fariin Qofka Aad Jeceshahay
+                    </h2>
+                    <p class="text-xs sm:text-sm text-rose-700/80 mb-6">
+                        Waad beddeli kartaa qoraalka hoose ama magaca qofka aad u dirayso ka hor intaadan koobiyeyn.
+                    </p>
+
+                    <!-- Fariimo Kala Duwan oo la dooran karo (Quick Presets) -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-5">
+                        <button onclick="setMessage(0)" class="preset-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-600 text-white shadow-sm transition hover:bg-rose-700">
+                            Fariinta 1aad
+                        </button>
+                        <button onclick="setMessage(1)" class="preset-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 transition hover:bg-rose-200">
+                            Fariinta 2aad
+                        </button>
+                        <button onclick="setMessage(2)" class="preset-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 transition hover:bg-rose-200">
+                            Fariinta 3aad
+                        </button>
+                    </div>
+
+                    <!-- Sanduuqa Qoraalka Jacaylka ee la tafatiri karo -->
+                    <div class="relative mb-7">
+                        <textarea 
+                            id="loveMessageInput" 
+                            rows="4"
+                            aria-label="Qoraalka Fariinta Jacaylka"
+                            class="editable-message w-full rounded-2xl bg-rose-50/80 border border-rose-200 p-5 text-center serif-font italic text-lg sm:text-xl text-rose-950 leading-relaxed resize-none transition"
+                        >“Indhahaagu waa iftiinka noloshayda, qalbiyadeennuna waa hal waddo oo ay maraan. Xilligii aan ku bartay wuxuu ahaa bilowgii farxaddayda dhabta ah. Waxaan kuu rajaynayaa inaad ogaato inaan mar walba ku jeclahay oo aad tahay qofka ugu muhiimsan ee aan maanka ku hayo.”</textarea>
+                    </div>
+
+                    <!-- Badhamada Ficilka (Copy & Send Love) -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button 
+                            onclick="copyLoveMessage()" 
+                            class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white border-2 border-rose-200 text-rose-900 font-semibold text-sm sm:text-base hover:bg-rose-50 hover:border-rose-400 active:scale-95 transition flex items-center justify-center gap-2.5 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <span>Koobiyeey Fariinta</span>
+                        </button>
+
+                        <button 
+                            id="sendLoveBtn"
+                            onclick="triggerHeartBurst(event)" 
+                            class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-600 to-red-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2.5">
+                            <span class="text-lg">💖</span>
+                            <span>Dir Jacayl</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Qaybta Hoose (Footer) -->
+        <footer class="text-center mt-16 pt-8 border-t border-rose-200/60 text-rose-800/70 text-sm">
+            <p>Jacaylku waa luqadda kaliya ee qalbi walba fahmo ✨</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // 1. Abuurista Wadnayaasha Gadaal ka Duulaya (Floating Background Hearts)
+        function createBackgroundHearts() {
+            const container = document.getElementById('bgHearts');
+            const heartSymbols = ['❤️', '💖', '💕', '💗', '🌸'];
+            const heartCount = 18;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                
+                // Meelayn iyo xawaare kala duwan
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 18 + 14) + 'px';
+                heart.style.animationDuration = (Math.random() * 12 + 12) + 's';
+                heart.style.animationDelay = (Math.random() * 10) + 's';
+                
+                container.appendChild(heart);
+            }
+        }
+
+        // 2. Fariimaha Jacaylka ee Diyaarsan (Presets)
+        const messages = [
+            "“Indhahaagu waa iftiinka noloshayda, qalbiyadeennuna waa hal waddo oo ay maraan. Xilligii aan ku bartay wuxuu ahaa bilowgii farxaddayda dhabta ah. Waxaan kuu rajaynayaa inaad ogaato inaan mar walba ku jeclahay oo aad tahay qofka ugu muhiimsan ee aan maanka ku hayo.”",
+            "“Maalin kasta oo aan kula hadlo waxay ii tahay farxad cusub. Waxaad tahay qofka kaliya ee dhoolla-caddayntiisu ay illowsiiso daalka adduunka. Waan ku jeclahay maanta, berri, iyo waligayba.”",
+            "“Haddii jacaylku leeyahay magac, magacaagu ayuu ahaan lahaa. Mahadsanid inaad noloshayda ku soo biirtay oo aad ka dhigtay mid qurux badan oo macno leh.”"
+        ];
+
+        function setMessage(index) {
+            const textarea = document.getElementById('loveMessageInput');
+            textarea.value = messages[index];
+
+            // Cusboonaysii midabka badhamada la doortay
+            const buttons = document.querySelectorAll('.preset-btn');
+            buttons.forEach((btn, i) => {
+                if (i === index) {
+                    btn.className = 'preset-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-600 text-white shadow-sm transition hover:bg-rose-700';
+                } else {
+                    btn.className = 'preset-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 transition hover:bg-rose-200';
+                }
+            });
+        }
+
+        // 3. Koobiyeynta Fariinta (Copy to Clipboard)
+        function copyLoveMessage() {
+            const textarea = document.getElementById('loveMessageInput');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // Mobile support
+
+            try {
+                document.execCommand('copy');
+                showToast('Fariinta jacaylka waa la koobiyeeyay! Hadda waad diri kartaa 💌');
+            } catch (err) {
+                showToast('Fadlan gacanta ku koobiyeey qoraalka.');
+            }
+            window.getSelection().removeAllRanges();
+        }
+
+        // 4. Qarxinta Wadnayaasha marka la riixo "Dir Jacayl"
+        function triggerHeartBurst(event) {
+            const btn = document.getElementById('sendLoveBtn');
+            const rect = btn.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top + rect.height / 2;
+
+            const symbols = ['❤️', '💖', '💘', '💝', '💕', '🌹'];
+            const burstCount = 22;
+
+            for (let i = 0; i < burstCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'burst-heart';
+                heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = originX + 'px';
+                heart.style.top = originY + 'px';
+
+                // Xagasha iyo fogaanta uu u duulayo wadne kasta
+                const angle = (Math.PI * 2 * i) / burstCount + (Math.random() * 0.4);
+                const distance = 90 + Math.random() * 180;
+                const tx = Math.cos(angle) * distance + 'px';
+                const ty = (Math.sin(angle) * distance - 80) + 'px';
+                const rot = (Math.random() * 360 - 180) + 'deg';
+
+                heart.style.setProperty('--tx', tx);
+                heart.style.setProperty('--ty', ty);
+                heart.style.setProperty('--rot', rot);
+
+                document.body.appendChild(heart);
+
+                // Ka saar marka animation-ku dhammaado
+                setTimeout(() => {
+                    heart.remove();
+                }, 2200);
+            }
+
+            showToast('Jacayl diirran ayaa la diray! ❤️✨');
+        }
+
+        // 5. Muujinta Ogeysiiska Yar (Toast)
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toastText');
+            
+            toastText.textContent = message;
+            toast.classList.remove('-translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // Bilow wadnayaasha gadaal marka boggu furmo
+        window.addEventListener('DOMContentLoaded', createBackgroundHearts);
+    </script>
+</body>
+</html>
